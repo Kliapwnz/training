@@ -1,9 +1,12 @@
+import {TaskType} from "./App";
+
 type Props = {
-   title:string
+   title: string
+   task: TaskType[]
 }
 
 
-export const TodolistItem = ({title}: Props) => {
+export const TodolistItem = ({title, task}: Props) => {
    return (
       <div>
          <h3>{title}</h3>
@@ -12,15 +15,14 @@ export const TodolistItem = ({title}: Props) => {
             <button>+</button>
          </div>
          <ul>
-            <li>
-               <input type="checkbox" checked={true}/> <span>HTML&CSS</span>
-            </li>
-            <li>
-               <input type="checkbox" checked={true}/> <span>JS</span>
-            </li>
-            <li>
-               <input type="checkbox" checked={false}/> <span>React</span>
-            </li>
+            {task.map(t => {
+               return (
+                  <li>
+                     <input type="checkbox" checked={t.isDone}/>
+                     <span>{t.title}</span>
+                  </li>
+               )
+            })}
          </ul>
          <div>
             <button>All</button>
