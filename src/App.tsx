@@ -33,12 +33,16 @@ function App() {
    if (filter === "completed") {
       filteredTasks = tasks.filter(t => t.isDone)
    }
+   const changeFilter = (filter:FilterValuesType) => {
+      setFilter(filter)
+   }
    return (
       <div className="app">
          <TodolistItem
             title={"My First Todo"}
             task={filteredTasks}
             deleteTask={deleteTask}
+            changeFilter={changeFilter}
          />
       </div>
    )
