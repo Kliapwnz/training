@@ -1,5 +1,6 @@
 import './App.css'
 import {TodolistItem} from "./TodolistItem";
+import {useState} from "react";
 
 export type TaskType = {
    id: number,
@@ -8,16 +9,18 @@ export type TaskType = {
 }
 
 function App() {
-   let tasks: TaskType[] = [
+   let [tasks, setTasks] = useState<TaskType[]>([
       {id: 1, title: 'HTML&CSS', isDone: true},
       {id: 2, title: 'JS', isDone: true},
       {id: 3, title: 'ReactJS', isDone: false},
-   ]
+   ])
 
 
-   const deleteTask = (taskId:number) => {
-      alert(taskId)
-
+   const deleteTask = (taskId: number) => {
+      const DeletedTasks = tasks.filter(t => {
+         return t.id !== taskId
+      })
+      setTasks(DeletedTasks)
    }
    return (
       <div className="app">
