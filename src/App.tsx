@@ -8,21 +8,24 @@ export type TaskType = {
 }
 
 function App() {
-   const tasks1: TaskType[] = [
+   let tasks: TaskType[] = [
       {id: 1, title: 'HTML&CSS', isDone: true},
       {id: 2, title: 'JS', isDone: true},
       {id: 3, title: 'ReactJS', isDone: false},
    ]
 
-   const tasks2: TaskType[] = [
-      {id: 1, title: 'Hello world', isDone: true},
-      {id: 2, title: 'I am Happy', isDone: false},
-      {id: 3, title: 'Yo', isDone: false},
-   ]
+
+   const deleteTask = (taskId:number) => {
+      alert(taskId)
+
+   }
    return (
       <div className="app">
-         <TodolistItem title={"My First Todo"} task={tasks1}/>
-         <TodolistItem title={"My Second Todo"} task={tasks2}/>
+         <TodolistItem
+            title={"My First Todo"}
+            task={tasks}
+            deleteTask={deleteTask}
+         />
       </div>
    )
 }
