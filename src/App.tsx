@@ -26,11 +26,18 @@ function App() {
       })
       setTasks(DeletedTasks)
    }
+   let filteredTasks = tasks
+   if (filter === "active") {
+      filteredTasks = tasks.filter(t => !t.isDone)
+   }
+   if (filter === "completed") {
+      filteredTasks = tasks.filter(t => t.isDone)
+   }
    return (
       <div className="app">
          <TodolistItem
             title={"My First Todo"}
-            task={tasks}
+            task={filteredTasks}
             deleteTask={deleteTask}
          />
       </div>
